@@ -1,21 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
-export class Student {
+export class Teacher {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column()
-  studentId!: string;
+  teacherId!: string;
 
   @Column()
   fullName!: string;
 
   @Column()
   fatherName!: string;
-
-  @Column()
-  cnic!: string;
 
   @Column()
   email!: string;
@@ -26,36 +23,33 @@ export class Student {
   @Column()
   gender!: string;
 
-  @Column()
+  @Column({ type: "date" })
   dateOfBirth!: string;
 
   @Column()
   department!: string;
 
   @Column()
-  year!: string;
+  qualification!: string;
 
   @Column()
-  semester!: number;
+  designation!: string;
 
-  @Column()
-  classSection!: string;
+  @Column({ default: "" })
+  subjects!: string;
 
-  @Column("text", { array: true, default: () => "'{}'" })
-  subjects!: string[];
+  @Column({ type: "date" })
+  joiningDate!: string;
 
-  @Column("jsonb", { default: {} })
-  teachers!: Record<string, string>;
-
-  @Column()
+  @Column("text")
   currentAddress!: string;
 
-  @Column()
+  @Column("text")
   permanentAddress!: string;
 
   @Column({ default: false })
   sameAddress!: boolean;
 
-  @Column({ nullable: true })
+  @Column("text", { nullable: true })
   profilePicture!: string;
 }

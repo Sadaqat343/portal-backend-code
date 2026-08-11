@@ -4,6 +4,8 @@ import {
   IsNumber,
   IsOptional,
   IsString,
+  IsArray,
+  IsObject,
 } from 'class-validator';
 
 export class CreateStudentDto {
@@ -44,8 +46,25 @@ export class CreateStudentDto {
   department!: string;
 
   @IsNotEmpty()
+  @IsString()
+  year!: string;
+
+  @IsNotEmpty()
   @IsNumber()
   semester!: number;
+
+  @IsNotEmpty()
+  @IsString()
+  classSection!: string;
+
+ @IsNotEmpty()
+  @IsArray()
+  @IsString({ each: true })
+  subjects!: string[];
+
+  @IsOptional()
+  @IsObject()
+  teachers?: Record<string, string>;
 
   @IsNotEmpty()
   @IsString()
